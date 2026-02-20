@@ -1,41 +1,49 @@
-# 🚀 Aprendendo FastAPI - 30 Dias
+# 🚀 API de Gerenciamento de Produtos (FastAPI)
 
-## 📚 Sobre
-Desafio de 30 dias estudando FastAPI do zero.
+Este é um projeto completo de Backend desenvolvido em Python utilizando **FastAPI**. A aplicação consiste em uma API RESTful para gerenciamento de produtos e usuários, com banco de dados relacional e autenticação segura.
 
-## ✅ Projetos Concluídos (Dias 1-4)
+🌐 **Acesse a API ao vivo:** [Documentação Interativa (Swagger)](https://fastapi-learning-m1iw.onrender.com/docs)
 
-### 1. API de Produtos
-CRUD completo com:
-- POST - Criar produto
-- GET - Listar todos
-- GET - Filtrar por preço (min/max)
-- GET - Buscar por ID
-- PUT - Atualizar produto
-- DELETE - Deletar produto
-
-### 2. API de Tarefas (To-Do)
-Sistema de gerenciamento de tarefas com:
-- POST - Criar tarefa
-- GET - Listar todas
-- GET - Filtrar por status (completed)
-- GET - Buscar por ID
-- PUT - Atualizar tarefa
-- DELETE - Deletar tarefa
-
-## 🛠️ Tecnologias
-- Python 3.x
-- FastAPI
-- Pydantic
-- Uvicorn
-
-## 🚀 Como rodar
-
-```bash
-pip install fastapi pydantic uvicorn
-uvicorn products_api:app --reload
-
-## 📖 Documentação
-Acesse `/docs` para ver a documentação interativa.
 ---
-**Status:** 🟢 Em andamento | **Dias completos:** 4/30
+
+## 🛠️ Tecnologias Utilizadas
+
+- **FastAPI:** Framework web principal, rápido e moderno.
+- **SQLAlchemy:** ORM (Object-Relational Mapping) para comunicação com o banco de dados.
+- **SQLite:** Banco de dados relacional leve.
+- **Pydantic:** Validação e serialização de dados.
+- **Passlib & Argon2:** Hashing de senhas seguro.
+- **PyJWT:** Geração e validação de tokens JWT para autenticação.
+- **Uvicorn:** Servidor ASGI para rodar a aplicação.
+- **Render:** Plataforma de Deploy na nuvem.
+
+---
+
+## ⚙️ Funcionalidades da API
+
+A API está dividida em três módulos principais:
+
+### 👤 1. Autenticação (`/auth`)
+- **POST `/auth/token`**: Recebe `username` e `password`, valida no banco de dados e retorna um Token JWT válido por tempo determinado.
+
+### 👥 2. Usuários (`/users`)
+- **POST `/users/`**: Cria um novo usuário com senha criptografada.
+- **GET `/users/`**: Lista todos os usuários cadastrados (sem retornar as senhas).
+- **GET `/users/{user_id}`**: Busca um usuário específico pelo ID.
+
+### 📦 3. Produtos (`/products`)
+- **POST `/products/`**: Cria um novo produto. *(Requer Autenticação JWT)* 🔒
+- **GET `/products/`**: Lista todos os produtos ou filtra por preço mínimo/máximo.
+- **GET `/products/{product_id}`**: Busca os detalhes de um produto específico.
+- **PUT `/products/{product_id}`**: Atualiza os dados de um produto existente.
+- **DELETE `/products/{product_id}`**: Remove um produto do banco de dados.
+
+---
+
+## 💻 Como rodar localmente
+
+Se quiser rodar o projeto na sua máquina, siga os passos abaixo:
+
+1. Clone este repositório:
+```bash
+git clone https://github.com/VictorMattosL/fastapi-learning.git
